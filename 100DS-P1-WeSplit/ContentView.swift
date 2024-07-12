@@ -37,7 +37,7 @@ struct ContentView: View {
                         .keyboardType(.decimalPad)
                         .focused($amountIsFocused)
                     Picker("Number of People", selection: $numberOfPeople){
-                        ForEach (2..<20) {
+                        ForEach (2..<10) {
                             Text("\($0) People")
                         }
                     }
@@ -55,6 +55,7 @@ struct ContentView: View {
                 
                 Section("Per Person Cost") {
                     Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "CAD"))
+                        .foregroundColor(tipAmount > 0 ? .blue : .red)
                 }
             }
             .navigationTitle("Check Splitting")
